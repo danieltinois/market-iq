@@ -73,7 +73,7 @@ export default function Essencia() {
                 Saiba mais →
               </motion.a>
               <motion.a
-                href="/monetizacao"
+                href="/monetization"
                 className="link-secondary"
                 variants={item}
                 whileHover={{ x: 2 }}

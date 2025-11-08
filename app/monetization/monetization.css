@@ -1,0 +1,165 @@
+.page {
+  padding: 10rem 1rem;
+}
+
+.container {
+  max-width: 1024px;
+  margin: 0 auto;
+}
+
+.section {
+  margin-bottom: 4rem;
+}
+
+/*** TÍTULOS ***/
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: hsl(210, 100%, 18%);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+h1 svg {
+  color: hsl(200, 100%, 50%);
+}
+
+/*** TEXTOS ***/
+.subtitle {
+  font-size: 1.125rem;
+  color: hsl(215, 16%, 47%);
+  margin-bottom: 2rem;
+  max-width: 900px;
+  text-align: center;
+}
+
+/*** DESCRIÇÃO ***/
+.descricao {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 3rem;
+  align-items: center;
+}
+
+/*** CARDS / TABELAS ***/
+.card,
+.tableContainer,
+.infoBox {
+  background: white;
+  border-radius: 0.875rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover,
+.tableContainer:hover,
+.infoBox:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.tableContainer {
+  overflow-x: auto;
+}
+
+/*** TABELAS ***/
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: hsl(210, 100%, 18%);
+  color: white;
+}
+
+th,
+td {
+  padding: 1rem;
+  text-align: center;
+  font-size: 0.95rem;
+  border-bottom: 1px solid hsl(214, 32%, 91%);
+}
+
+tbody tr:hover {
+  background-color: hsl(210, 40%, 96%);
+}
+
+.check {
+  color: hsl(142, 71%, 45%);
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.xmark {
+  color: hsl(0, 84%, 60%);
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+/*** GRID ***/
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+/*** INFO BOX ***/
+.infoBox {
+  padding: 1.5rem;
+  border-left: 4px solid hsl(200, 100%, 50%);
+}
+
+.infoBox h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: hsl(210, 100%, 18%);
+  margin-bottom: 1rem;
+}
+
+.infoBox ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.infoBox li {
+  padding: 0.5rem 0 0.5rem 1.5rem;
+  position: relative;
+  color: hsl(215, 16%, 47%);
+}
+
+.infoBox li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  color: hsl(200, 100%, 50%);
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+/*** MOBILE ***/
+@media (max-width: 768px) {
+  .page {
+    padding: 1rem 0.5rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+  }
+
+  th,
+  td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
