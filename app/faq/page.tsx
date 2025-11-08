@@ -6,70 +6,73 @@ import { useEffect } from 'react';
 
 export default function FAQPage() {
   useEffect(() => {
-  const triggers = document.querySelectorAll('.accordion-trigger');
+    const triggers = document.querySelectorAll('.accordion-trigger');
 
-  triggers.forEach(trigger => {
-    trigger.addEventListener('click', () => {
-      const item = (trigger as HTMLElement).parentElement;
-      if (!item) return;
-
-      const isActive = item.classList.contains('active');
-
-      document.querySelectorAll('.accordion-item').forEach(i => {
-        i.classList.remove('active');
-        i.querySelector('.accordion-trigger')?.classList.remove('active');
-      });
-
-      if (!isActive) {
-        item.classList.add('active');
-        trigger.classList.add('active');
-      }
-    });
-  });
-
-  return () => {
     triggers.forEach(trigger => {
-      trigger.replaceWith(trigger.cloneNode(true));
-    });
-  };
-}, []);
+      trigger.addEventListener('click', () => {
+        const item = (trigger as HTMLElement).parentElement;
+        if (!item) return;
 
-    const searchInput = document.getElementById('searchInput');
+        const isActive = item.classList.contains('active');
+
+        document.querySelectorAll('.accordion-item').forEach(i => {
+          i.classList.remove('active');
+          i.querySelector('.accordion-trigger')?.classList.remove('active');
+        });
+
+        if (!isActive) {
+          item.classList.add('active');
+          trigger.classList.add('active');
+        }
+      });
+    });
+
+    const searchInput = document.getElementById(
+      'searchInput'
+    ) as HTMLInputElement | null;
     const categorySections = document.querySelectorAll('.category-section');
     const noResults = document.getElementById('noResults');
 
-    if (!searchInput) return;
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        const searchTerm = searchInput.value.toLowerCase();
+        let hasResults = false;
 
-    searchInput.addEventListener('input', function () {
-      const searchTerm = this.value.toLowerCase();
-      let hasResults = false;
+        categorySections.forEach(section => {
+          const items = section.querySelectorAll('.accordion-item');
+          let sectionHasResults = false;
 
-      categorySections.forEach(section => {
-        const items = section.querySelectorAll('.accordion-item');
-        let sectionHasResults = false;
+          items.forEach(item => {
+            const text = item.getAttribute('data-question') ?? '';
+            const matches = text.includes(searchTerm);
 
-        items.forEach(item => {
-          const text = item.getAttribute('data-question');
-          const matches = text.includes(searchTerm);
+            if (matches) {
+              (item as HTMLElement).style.display = '';
+              sectionHasResults = true;
+              hasResults = true;
+            } else {
+              (item as HTMLElement).style.display = 'none';
+            }
+          });
 
-          if (matches) {
-            item.style.display = '';
-            sectionHasResults = true;
-            hasResults = true;
-          } else {
-            item.style.display = 'none';
-          }
+          (section as HTMLElement).style.display = sectionHasResults
+            ? ''
+            : 'none';
         });
 
-        section.style.display = sectionHasResults ? '' : 'none';
+        if (hasResults || searchTerm === '') {
+          noResults?.classList.add('hidden');
+        } else {
+          noResults?.classList.remove('hidden');
+        }
       });
+    }
 
-      if (hasResults || searchTerm === '') {
-        noResults.classList.add('hidden');
-      } else {
-        noResults.classList.remove('hidden');
-      }
-    });
+    return () => {
+      triggers.forEach(trigger => {
+        trigger.replaceWith(trigger.cloneNode(true));
+      });
+    };
   }, []);
 
   return (
