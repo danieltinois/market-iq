@@ -27,52 +27,57 @@ export default function FAQPage() {
       });
     });
 
+    return () => {
+      triggers.forEach(trigger => {
+        trigger.replaceWith(trigger.cloneNode(true));
+      });
+    };
+  }, []);
+
+  useEffect(() => {
     const searchInput = document.getElementById(
       'searchInput'
     ) as HTMLInputElement | null;
     const categorySections = document.querySelectorAll('.category-section');
     const noResults = document.getElementById('noResults');
 
-    if (searchInput) {
-      searchInput.addEventListener('input', () => {
-        const searchTerm = searchInput.value.toLowerCase();
-        let hasResults = false;
+    if (!searchInput) return;
 
-        categorySections.forEach(section => {
-          const items = section.querySelectorAll('.accordion-item');
-          let sectionHasResults = false;
+    const handler = () => {
+      const searchTerm = searchInput.value.toLowerCase();
+      let hasResults = false;
 
-          items.forEach(item => {
-            const text = item.getAttribute('data-question') ?? '';
-            const matches = text.includes(searchTerm);
+      categorySections.forEach(section => {
+        const items = section.querySelectorAll('.accordion-item');
+        let sectionHasResults = false;
 
-            if (matches) {
-              (item as HTMLElement).style.display = '';
-              sectionHasResults = true;
-              hasResults = true;
-            } else {
-              (item as HTMLElement).style.display = 'none';
-            }
-          });
+        items.forEach(item => {
+          const text = item.getAttribute('data-question');
+          const matches = text?.includes(searchTerm);
 
-          (section as HTMLElement).style.display = sectionHasResults
-            ? ''
-            : 'none';
+          if (matches) {
+            (item as HTMLElement).style.display = '';
+            sectionHasResults = true;
+            hasResults = true;
+          } else {
+            (item as HTMLElement).style.display = 'none';
+          }
         });
 
-        if (hasResults || searchTerm === '') {
-          noResults?.classList.add('hidden');
-        } else {
-          noResults?.classList.remove('hidden');
-        }
+        (section as HTMLElement).style.display = sectionHasResults
+          ? ''
+          : 'none';
       });
-    }
 
-    return () => {
-      triggers.forEach(trigger => {
-        trigger.replaceWith(trigger.cloneNode(true));
-      });
+      if (hasResults || searchTerm === '') {
+        noResults?.classList.add('hidden');
+      } else {
+        noResults?.classList.remove('hidden');
+      }
     };
+
+    searchInput.addEventListener('input', handler);
+    return () => searchInput.removeEventListener('input', handler);
   }, []);
 
   return (
@@ -200,7 +205,14 @@ export default function FAQPage() {
   );
 }
 
-function Category({ title, icon, children }) {
+/* ✅ TS Props Tipadas */
+interface CategoryProps {
+  title: string;
+  icon: React.ReactNode;
+  children: React.ReactNode;
+}
+
+function Category({ title, icon, children }: CategoryProps) {
   return (
     <div className="category-section">
       <div className="category-header">
@@ -213,7 +225,13 @@ function Category({ title, icon, children }) {
   );
 }
 
-function AccordionItem({ question, search, children }) {
+interface AccordionItemProps {
+  question: string;
+  search: string;
+  children: React.ReactNode;
+}
+
+function AccordionItem({ question, search, children }: AccordionItemProps) {
   return (
     <div className="accordion-item" data-question={search}>
       <button className="accordion-trigger">{question}</button>
