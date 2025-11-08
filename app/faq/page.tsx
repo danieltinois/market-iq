@@ -9,8 +9,8 @@ export default function FAQPage() {
     const triggers = document.querySelectorAll('.accordion-trigger');
 
     triggers.forEach(trigger => {
-      trigger.addEventListener('click', function () {
-        const item = this.parentElement;
+      trigger.addEventListener('click', () => {
+        const item = (trigger as HTMLElement).parentElement;
         const isActive = item.classList.contains('active');
 
         document.querySelectorAll('.accordion-item').forEach(i => {
