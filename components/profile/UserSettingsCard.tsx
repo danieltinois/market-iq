@@ -30,14 +30,14 @@ export default function UserSettingsCard() {
               <label className="form-label">
                 <strong>Nome</strong>
               </label>
-              <input className="form-control" placeholder="Daniel" />
+              <input className="form-control" placeholder="Valerie" />
             </div>
 
             <div className="col mb-3">
               <label className="form-label">
                 <strong>Sobrenome</strong>
               </label>
-              <input className="form-control" placeholder="Tinois" />
+              <input className="form-control" placeholder="Luna" />
             </div>
           </div>
 

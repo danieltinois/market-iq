@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import '../styles/home.css';
 import './globals.css';
 
 import '@/styles/bss-overrides.css';
