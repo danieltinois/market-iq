@@ -1,0 +1,282 @@
+/* --------------------------
+    GLOBAL
+--------------------------- */
+body {
+  background: #f4f6fa !important;
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+#content-wrapper {
+  min-height: 100vh;
+  background: #f4f6fa;
+}
+
+/* --------------------------
+    SIDEBAR
+--------------------------- */
+
+.sidebar {
+  width: 250px;
+  background: linear-gradient(180deg, #3f51b5, #1b2b6b);
+  color: #fff;
+  transition: 0.25s;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.sidebar .navbar-brand {
+  padding: 24px 16px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+}
+
+.sidebar .sidebar-brand-icon i {
+  font-size: 26px;
+}
+
+.sidebar .nav-link {
+  padding: 12px 18px;
+  margin: 2px 8px;
+  border-radius: 8px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  opacity: 0.7;
+  transition: 0.2s ease;
+}
+
+.sidebar .nav-link span {
+  font-size: 0.94rem;
+}
+
+.sidebar .nav-link.active,
+.sidebar .nav-link:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+/* --------------------------
+    TOPBAR
+--------------------------- */
+
+.topbar {
+  background: #ffffff !important;
+  padding: 14px 24px !important;
+  border-bottom: 1px solid #e1e6ef;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.topbar input {
+  border-radius: 8px !important;
+  height: 38px !important;
+}
+
+.topbar-modern {
+  border-bottom: 1px solid #e8e8e8;
+  min-height: 64px;
+}
+
+/* ICON DEFAULT */
+.top-icon {
+  position: relative;
+}
+
+.top-action {
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 8px;
+  transition: 0.2s;
+  color: #525252;
+}
+
+.top-action:hover {
+  background: #f4f4f4;
+}
+
+/* BADGE */
+.badge-dot {
+  position: absolute;
+  top: 0;
+  right: -4px;
+  font-size: 10px;
+  background: #d9534f;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 10px;
+}
+
+/* USER IMG */
+.top-avatar {
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 1px #ddd;
+}
+
+/* DROPDOWN ANIMATION */
+.animate-dropdown {
+  animation: fadeScale 0.18s ease-out;
+}
+
+@keyframes fadeScale {
+  0% {
+    opacity: 0;
+    transform: scale(0.94) translateY(-6px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* MENU */
+.soft-dropdown {
+  border-radius: 10px;
+  padding: 10px 0;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* ICON CIRCLE */
+.circle-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* STATUS DOT */
+.status-dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  bottom: 0;
+  right: 0;
+  border: 2px solid white;
+}
+
+/* --------------------------
+    CARDS DE STATS
+--------------------------- */
+
+.stat-card {
+  border-radius: 12px;
+  background: #fff;
+  padding: 20px 24px;
+  border: 1px solid #e7eaf2;
+  transition: 0.2s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card .title {
+  font-size: 0.72rem;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #717b8a;
+}
+
+.stat-card .value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 6px;
+  color: #1e2531;
+}
+
+.stat-card i {
+  font-size: 28px;
+  opacity: 0.25;
+}
+
+/* --------------------------
+    SECTION HEADINGS
+--------------------------- */
+
+.section-title {
+  color: #3f51b5;
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
+/* --------------------------
+    CARD BASE
+--------------------------- */
+
+.card {
+  border-radius: 12px !important;
+  background: #fff !important;
+  border: 1px solid #e7eaf2 !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06) !important;
+}
+
+.card-header {
+  background: inherit !important;
+  border-bottom: none !important;
+  padding: 18px 24px !important;
+}
+
+.card-body {
+  padding: 18px 24px !important;
+}
+
+/* --------------------------
+    CHARTS
+--------------------------- */
+
+.chart-area {
+  height: 300px;
+}
+
+.chart-area canvas {
+  border-radius: 8px;
+}
+
+/* --------------------------
+    PROJECT PROGRESS
+--------------------------- */
+
+.project-progress h4 {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.progress {
+  height: 8px !important;
+  border-radius: 12px !important;
+  background: #e7eaf2 !important;
+}
+
+.progress-bar {
+  border-radius: 12px !important;
+}
+
+/* --------------------------
+    TODO LIST
+--------------------------- */
+
+.list-group-item {
+  border: none;
+  padding: 16px 22px;
+  font-size: 0.95rem;
+}
+
+.text-xs {
+  font-size: 0.75rem;
+  color: #8f96a3;
+}
+
+/* --------------------------
+    FOOTER
+--------------------------- */
+
+footer {
+  border-top: 1px solid #e1e6ef;
+  padding: 16px 0;
+}
