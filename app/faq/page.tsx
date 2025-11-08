@@ -6,24 +6,33 @@ import { useEffect } from 'react';
 
 export default function FAQPage() {
   useEffect(() => {
-    const triggers = document.querySelectorAll('.accordion-trigger');
+  const triggers = document.querySelectorAll('.accordion-trigger');
 
-    triggers.forEach(trigger => {
-      trigger.addEventListener('click', () => {
-        const item = (trigger as HTMLElement).parentElement;
-        const isActive = item.classList.contains('active');
+  triggers.forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item = (trigger as HTMLElement).parentElement;
+      if (!item) return;
 
-        document.querySelectorAll('.accordion-item').forEach(i => {
-          i.classList.remove('active');
-          i.querySelector('.accordion-trigger')?.classList.remove('active');
-        });
+      const isActive = item.classList.contains('active');
 
-        if (!isActive) {
-          item.classList.add('active');
-          this.classList.add('active');
-        }
+      document.querySelectorAll('.accordion-item').forEach(i => {
+        i.classList.remove('active');
+        i.querySelector('.accordion-trigger')?.classList.remove('active');
       });
+
+      if (!isActive) {
+        item.classList.add('active');
+        trigger.classList.add('active');
+      }
     });
+  });
+
+  return () => {
+    triggers.forEach(trigger => {
+      trigger.replaceWith(trigger.cloneNode(true));
+    });
+  };
+}, []);
 
     const searchInput = document.getElementById('searchInput');
     const categorySections = document.querySelectorAll('.category-section');
